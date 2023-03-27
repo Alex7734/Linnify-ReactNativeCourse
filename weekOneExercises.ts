@@ -64,3 +64,22 @@ const personsToChange: PersonToChange[] = [
 const formattedPersons = formatPersons(personsToChange);
 console.log(formattedPersons);
 
+// Excercise 5
+
+function sortByAge(persons: Person[]): Person[] {
+  return persons.sort((a, b) => a.age - b.age);
+}
+
+const sortedPersons = sortByAge(persons);
+console.log(sortedPersons);
+
+// Exercise 6
+
+function removeUnderagedPersons(persons: Person[], ageThreshold: number): Person[] {
+  return persons.filter(person => person.age >= ageThreshold);
+}
+
+const underagedPersons = removeUnderagedPersons(persons, 30);
+console.log(underagedPersons);
+
+
