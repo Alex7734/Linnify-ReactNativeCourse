@@ -8,13 +8,6 @@ interface Props{
 }
 
 export function Card({post, handleImagePress}:Props) {
-  
-  const [title, setTitle] = useState("Alex Mihoc")
-  const [newBoi, setBoi] = useState({id: 1, title: "Alex Mihoc"})
- 
-  const changeTitle = () => {
-    setBoi({...newBoi, title: 'NewBoi'})
-  }
 
   const onPressLike = () => console.log('like') 
   const onPressComment = () => console.log('comment')
@@ -24,13 +17,13 @@ export function Card({post, handleImagePress}:Props) {
     <View style={styles.card}>
       <View style={styles.header}>
         <Image source={require('../assets/person.png')} style={styles.profilePic} />
-        <Text style={styles.headerText}>{newBoi.title}</Text>
+        <Text style={styles.headerText}>{post.name}</Text>
       </View>
-      <Pressable onPress={() => handleImagePress(title)} >
-        {newBoi.title === "NewBoi" &&  <Image resizeMode='cover' source={post.image} style={styles.postImage} />}
+      <Pressable onPress={() => handleImagePress(post.name)} >
+       <Image resizeMode='cover' source={post.image} style={styles.postImage} />
       </Pressable>
       <View style={styles.buttons}>
-        <Pressable onPressIn={changeTitle} style={styles.button}>
+        <Pressable onPressIn={onPressLike} style={styles.button}>
             <Image 
             source={require('../assets/like.png')} 
             style={styles.buttonIcon} 
