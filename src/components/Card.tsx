@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Alert, Pressable } from 'react-native';
+import { Post } from '../types/Post.interface';
 
-export function MyCard() {
+interface Props{
+  post: Post,
+  handleImagePress: (title: string) => void
+}
 
-  const handleImagePress = () => {
-    Alert.alert("Image pressed!\nNiste frumosi in poza :)");
-    // AM INVATAT SA FAC ALERTURI, BOGDAN BE PROUD
-  }
+export function Card({post, handleImagePress}:Props) {
   
-  const onPressLike = () => {
-    console.log('like')
+  const [title, setTitle] = useState("Alex Mihoc")
+  const [newBoi, setBoi] = useState({id: 1, title: "Alex Mihoc"})
+ 
+  const changeTitle = () => {
+    setBoi({...newBoi, title: 'NewBoi'})
   }
 
-  const onPressComment = () => {
-    console.log('comment')
-  }
-
-  const onPressShare = () => {
-    console.log('share')
-  }
-
+  const onPressLike = () => console.log('like') 
+  const onPressComment = () => console.log('comment')
+  const onPressShare = () => console.log('share')
 
   return (
     <View style={styles.card}>
       <View style={styles.header}>
         <Image source={require('../assets/person.png')} style={styles.profilePic} />
-        <Text style={styles.headerText}>Alex Mihoc</Text>
+        <Text style={styles.headerText}>{newBoi.title}</Text>
       </View>
-      <Pressable onPress={handleImagePress} >
-        <Image source={require('../assets/photo.jpg')} style={styles.postImage} />
+      <Pressable onPress={() => handleImagePress(title)} >
+        {newBoi.title === "NewBoi" &&  <Image resizeMode='cover' source={post.image} style={styles.postImage} />}
       </Pressable>
       <View style={styles.buttons}>
-        <Pressable onPressIn={onPressLike} style={styles.button}>
+        <Pressable onPressIn={changeTitle} style={styles.button}>
             <Image 
             source={require('../assets/like.png')} 
             style={styles.buttonIcon} 
