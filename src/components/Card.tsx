@@ -4,116 +4,92 @@ import { Post } from '../types/Post.interface';
 
 interface Props{
   post: Post,
-  handleImagePress: (title: string) => void
+  handleFavouriteChange: (isFavourite: boolean) => void
 }
 
-export function Card({post, handleImagePress}:Props) {
+export function Card({post, handleFavouriteChange}:Props) {
 
-  const onPressLike = () => console.log('like') 
-  const onPressComment = () => console.log('comment')
-  const onPressShare = () => console.log('share')
+  const [isFavorite, setIsFavorite] = useState(false);
+
+
+  const handleFavorite = () => {
+    handleFavouriteChange(isFavorite);
+    setIsFavorite(!isFavorite);
+  };
 
   return (
-    <View style={styles.card}>
+    <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../assets/person.png')} style={styles.profilePic} />
-        <Text style={styles.headerText}>{post.name}</Text>
-      </View>
-      <Pressable onPress={() => handleImagePress(post.name)} >
-       <Image resizeMode='cover' source={post.image} style={styles.postImage} />
+      <Text style={styles.title}>{post.name}</Text>
+      <Pressable onPress={handleFavorite} style={styles.favoriteIcon}>
+        <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} />
       </Pressable>
-      <View style={styles.buttons}>
-        <Pressable onPressIn={onPressLike} style={styles.button}>
-            <Image 
-            source={require('../assets/like.png')} 
-            style={styles.buttonIcon} 
-            />
-          <Text style={styles.buttonText}>Like</Text>
-        </Pressable>
-        <Pressable  onPressIn={onPressComment} style={styles.button}>
-            <Image 
-            source={require('../assets/message.png')} 
-            style={styles.buttonIcon} 
-            />
-          <Text style={styles.buttonText}>Comment</Text>
-        </Pressable>
-        <Pressable  onPressIn={onPressShare} style={styles.button}>
-            <Image 
-            source={require('../assets/share.png')} 
-            style={styles.buttonIcon} 
-            />
-          <Text style={styles.buttonText}>Share</Text>
-        </Pressable>
+      </View>
+      <Image  source={post.image} style={styles.image}/>
+      <View style={styles.content}>
+        <Text style={styles.description}>{post.description}</Text>
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    margin: 12,
-    borderWidth: 1,
-    borderColor: '#e6e6e6',
-    overflow: 'hidden'
+  container: {
+    borderRadius: 10,
+    overflow: "hidden",
+    backgroundColor: "#FFFFFF",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+    marginBottom: 10,
   },
-
   header: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    height: 50,
-    padding: 12
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#DDDDDD",
   },
-
-  profilePic: {
-    width: 32,
-    height: 32,
-    borderRadius: 50,
-    borderColor: 'black',
-    borderWidth: 1,
-    marginRight: 10
+  profilePicture: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 10,
   },
-
-  headerText: {
-    color: 'grey',
-    fontSize: 18,
+  favoriteIcon: {
+    marginLeft: "auto",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 20,
+    width: 35,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
   },
-
-  postImage: {
-    width: '100%',
+  icon: {
+    width: 25,
+    height: 25,
+  },
+  image: {
+    width: "100%",
     height: 200,
+    resizeMode: "cover",
   },
-
-  buttons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 12,
+  content: {
+    padding: 10,
   },
-
-  button: {
-    flex: 1,
-    justifyContent: 'space-around',
-    flexDirection: 'row',
-    backgroundColor: '#f2f2f2',
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    margin: 5
+  title: {
+    fontWeight: "bold",
+    fontSize: 20,
+    marginBottom: 5,
+    color: "#333333",
   },
-  
-  buttonText: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: 'gray',
-    textAlign: 'center'
+  description: {
+    fontSize: 16,
+    color: "#555555",
+    lineHeight: 20,
   },
-
-  buttonIcon: {
-    width: 16,
-    height: 16,
-  },
-
 });
