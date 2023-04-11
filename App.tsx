@@ -13,14 +13,14 @@ import {
 import {Card} from './src/components/Card';
 import { Post } from './src/types/Post.interface';
 import BookList from './src/components/BookList';
+import { LoginForm } from './src/components/LoginForm';
 
 function App(): JSX.Element {  
   
   return (
     <SafeAreaView style={styles.container}>
       <BookList></BookList>
-      
-
+      {/* <LoginForm></LoginForm> */}
     </SafeAreaView>
     );
 }
