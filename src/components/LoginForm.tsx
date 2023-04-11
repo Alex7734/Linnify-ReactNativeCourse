@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, StyleSheet, Alert, Pressable, Image } from 'react-native';
 
-export const LoginForm = () => {
+export const LoginForm = ({handleNavigation}:{handleNavigation: () => void}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +11,7 @@ export const LoginForm = () => {
       return Alert.alert(`Email: ${email}\nPassword: ${password}`);
     } 
     Alert.alert('Please enter both email and password');
+    handleNavigation();
   };
 
   const toggleShowPassword = () => {
@@ -60,7 +61,7 @@ export const LoginForm = () => {
             <Image style={styles.icon} source={require('../assets/eye.png')} />
         </Pressable>
       </View>
-      <Pressable style={styles.loginButton} onPress={handleLogin}>
+      <Pressable onPress={handleLogin} style={styles.loginButton} >
         <Text style={styles.loginButtonText}>Login</Text>
       </Pressable>
     </View>

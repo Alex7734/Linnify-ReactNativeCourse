@@ -45,17 +45,16 @@ function BookList(): JSX.Element {
         },
     ]
  
-    const [favoriteCount, setFavoriteCount] = useState(0);
+    const [favoriteCount, setFavoriteCount] = useState<number>(0);
 
     const handleFavouriteChange = (isFavourite: boolean) => {
       if (isFavourite) {
-        setFavoriteCount((prevCount) => prevCount - 1);
-      } else {
-        setFavoriteCount((prevCount) => prevCount + 1);
-      }
+        return setFavoriteCount((prevCount) => prevCount - 1);
+      } 
+        return setFavoriteCount((prevCount) => prevCount + 1);
     };
 
-  const renderItem = ({item}: ListRenderItemInfo<Post>) => <Card post={item} handleFavouriteChange={handleFavouriteChange}></Card>
+  const renderItem = ({item}: ListRenderItemInfo<Post>) => <Card post={item} handleFavouriteChange={handleFavouriteChange}/>
 
   return (
       <FlatList

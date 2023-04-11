@@ -1,27 +1,26 @@
 import React, {useState} from 'react';
 import {
-  Alert,
-  FlatList,
-  ListRenderItemInfo,
-  Pressable,
   SafeAreaView,
   StyleSheet,
-  Text,
-  View,
+
 } from 'react-native';
 
-import {Card} from './src/components/Card';
-import { Post } from './src/types/Post.interface';
 import BookList from './src/components/BookList';
 import { LoginForm } from './src/components/LoginForm';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppNavigator } from './src/navigation/navigators/app-navigator';
 
 function App(): JSX.Element {  
   
   return (
-    <SafeAreaView style={styles.container}>
-      <BookList></BookList>
-      {/* <LoginForm></LoginForm> */}
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+       {/* <BookList></BookList> */}
+       {/* <LoginForm></LoginForm>≥ */}
+        <AppNavigator></AppNavigator>
+      </SafeAreaView>
+    </NavigationContainer>
+
     );
 }
 
@@ -32,7 +31,5 @@ const styles = StyleSheet.create({
 },
 
 });
-
-
 
 export default App;
