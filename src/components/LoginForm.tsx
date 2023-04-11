@@ -8,10 +8,9 @@ export const LoginForm = () => {
 
   const handleLogin = () => {
     if (email && password) {
-      Alert.alert(`Email: ${email}\nPassword: ${password}`);
-    } else {
-      Alert.alert('Please enter both email and password');
-    }
+      return Alert.alert(`Email: ${email}\nPassword: ${password}`);
+    } 
+    Alert.alert('Please enter both email and password');
   };
 
   const toggleShowPassword = () => {
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 30,
     paddingHorizontal: 10,
     marginBottom: 20,
   },
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     backgroundColor: 'blue',
-    borderRadius: 5,
+    borderRadius: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -117,10 +116,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
     icon: {
-        width: 20,
-        height: 20,
+        width: 30,
+        height: 30,
         marginBottom: 20,
-        marginLeft: 10
+        marginLeft: 5
     }
 });
 

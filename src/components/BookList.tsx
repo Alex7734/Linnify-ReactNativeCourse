@@ -59,7 +59,7 @@ function BookList(): JSX.Element {
 
   return (
       <FlatList
-        style={{padding: 12}}
+        style={{padding: 12, backgroundColor: "#F7F7F0"}}
         data = {data}
         renderItem = {renderItem}
         keyExtractor = {(item: Post) => item.name}
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
   },
 
   headerContainer: {
-    backgroundColor: "#f5f5f5",
     padding: 10,
   },
   headerText: {

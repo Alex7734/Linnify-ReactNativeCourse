@@ -34,7 +34,7 @@ export function Card({post, handleFavouriteChange}:Props) {
 }
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 10,
+    borderRadius: 20,
     overflow: "hidden",
     backgroundColor: "#FFFFFF",
     shadowColor: "#000",
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
+    shadowOpacity: 0.25,
     elevation: 4,
     marginBottom: 10,
+    borderWidth: 0.5
   },
   header: {
     flexDirection: "row",
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#DDDDDD",
+    backgroundColor: "#FFFFFF",
   },
   profilePicture: {
     width: 40,
