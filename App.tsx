@@ -18,8 +18,8 @@ function App(): JSX.Element {
       <SafeAreaView style={styles.container}>
        {/* <BookList></BookList> */}
        {/* <LoginForm></LoginForm>≥ */}
-        {/* <AppNavigator></AppNavigator> */}
-        <BottomTabs></BottomTabs>
+        <AppNavigator></AppNavigator>
+        {/* <BottomTabs></BottomTabs> */}
       </SafeAreaView>
     </NavigationContainer>
 

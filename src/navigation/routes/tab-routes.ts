@@ -1,6 +1,6 @@
 export enum TabRoutes {
-    Home = 'Home',
-    Login = 'Login',
+    Home = 'Tab-Home',
+    Login = 'Tab-Login',
     Books = 'Books',
 }
 

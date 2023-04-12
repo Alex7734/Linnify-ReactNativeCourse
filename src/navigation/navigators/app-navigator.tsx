@@ -4,6 +4,7 @@ import { Pressable } from 'react-native';
 import { Login } from '../../screens/Login';
 import { Home } from '../../screens/Home';
 import { AppRouteProps, AppRoutes } from '../routes/app-routes';
+import { BottomTabs } from './tab-navigator';
 
 // headerTitle to overwrite the title
 // headerLeft to add a component to the left of the title
@@ -23,7 +24,9 @@ const Stack = createStackNavigator<AppRouteProps>();
 
 export const AppNavigator = () => {
     return(
-        <Stack.Navigator screenOptions={
+        <Stack.Navigator
+        initialRouteName={AppRoutes.Login}
+        screenOptions={
             {
                 headerStyle: {backgroundColor:'blue'}
             }
@@ -61,7 +64,7 @@ export const AppNavigator = () => {
                         </Pressable>,        
                     }
                 }}
-             component={Login} />
+             component={BottomTabs} />
         </Stack.Navigator>
     )
 }
