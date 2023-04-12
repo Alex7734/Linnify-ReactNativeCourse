@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Alert, Pressable } from 'react-native';
 import { Post } from '../types/Post.interface';
+import { HomeIcon } from '../assets/icons';
 
 interface Props{
   post: Post,
@@ -22,7 +23,8 @@ export function Card({post, handleFavouriteChange}:Props) {
       <View style={styles.header}>
       <Text style={styles.title}>{post.name}</Text>
       <Pressable onPress={handleFavorite} style={styles.favoriteIcon}>
-        <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} />
+        <HomeIcon width={25} height={25}/>
+        {/* <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} /> */}
       </Pressable>
       </View>
       <Image  source={post.image} style={styles.image}/>
