@@ -8,7 +8,6 @@ import { HomeIcon, ListIcon, PersonIcon } from '../../assets/icons';
 import { AppNavigator } from './app-navigator';
 import { useNavigation } from '@react-navigation/native';
 import { AppRoutes } from '../routes/app-routes';
-import { TopTabs } from './top-tab-navigator';
 LogBox.ignoreAllLogs(true) // for interviews
 
 
@@ -41,7 +40,7 @@ export const BottomTabs = () => {
                         tabBarIcon: () => <HomeIcon width={25} height={25} />
                     }}    
                 />
-                <Tab.Screen name={TabRoutes.Login} component={TopTabs}
+                <Tab.Screen name={TabRoutes.Login} component={() => <View style ={{flex: 1, backgroundColor: 'green'}}></View>}
                     options={{ 
                         tabBarLabel: 'Profile',
                         tabBarIcon: () => <PersonIcon width={25} height={25} />

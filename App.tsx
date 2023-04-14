@@ -8,7 +8,7 @@ import {
 import BookList from './src/components/BookList';
 import { LoginForm } from './src/components/LoginForm';
 import { NavigationContainer } from '@react-navigation/native';
-import { AppNavigator } from './src/navigation/navigators/app-navigator';
+import { AppNavigator } from './src/navigation/navigators/homework-navigator';
 import { BottomTabs } from './src/navigation/navigators/tab-navigator';
 
 function App(): JSX.Element {  
@@ -16,10 +16,9 @@ function App(): JSX.Element {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
-       {/* <BookList></BookList> */}
-       {/* <LoginForm></LoginForm>≥ */}
-        <AppNavigator></AppNavigator>
+        {/* <AppNavigator></AppNavigator> */}
         {/* <BottomTabs></BottomTabs> */}
+        <AppNavigator />
       </SafeAreaView>
     </NavigationContainer>
 
