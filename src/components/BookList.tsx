@@ -19,12 +19,6 @@ const Footer = ({ favoriteCount }: any) => {
   );
 };
 
-const Header = () => (
-  <View style={styles.headerContainer}>
-    <Text style={styles.headerText}>Amazon 2.0</Text>
-  </View>
-);
-
 function BookList(): JSX.Element {  
  
     const data:Post[] = [
@@ -54,7 +48,10 @@ function BookList(): JSX.Element {
         return setFavoriteCount((prevCount) => prevCount + 1);
     };
 
-  const renderItem = ({item}: ListRenderItemInfo<Post>) => <Card post={item} handleFavouriteChange={handleFavouriteChange}/>
+  const renderItem = ({item}: ListRenderItemInfo<Post>) => 
+  <View>
+    <Card post={item} handleFavouriteChange={handleFavouriteChange}/>
+  </View>
 
   return (
       <FlatList
@@ -63,7 +60,6 @@ function BookList(): JSX.Element {
         renderItem = {renderItem}
         keyExtractor = {(item: Post) => item.name}
         ListEmptyComponent={() => <Text>No data</Text>}
-        ListHeaderComponent= {() => <Header/>}
         ListFooterComponent={() => <Footer favoriteCount={favoriteCount} />}
         ItemSeparatorComponent={() => <View
           style={{

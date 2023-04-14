@@ -23,8 +23,7 @@ export function Card({post, handleFavouriteChange}:Props) {
       <View style={styles.header}>
       <Text style={styles.title}>{post.name}</Text>
       <Pressable onPress={handleFavorite} style={styles.favoriteIcon}>
-        <HomeIcon width={25} height={25}/>
-        {/* <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} /> */}
+        <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} />
       </Pressable>
       </View>
       <Image  source={post.image} style={styles.image}/>
