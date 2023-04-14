@@ -15,6 +15,13 @@ import { BookDetail} from '../../screens/homework4/BookDetail';
 const Stack = createStackNavigator<HomeworkRouteProps>();
 
 export const AppNavigator = () => {
+
+  const forFade = ({ current }: any) => ({
+    cardStyle: {
+      opacity: current.progress,
+    },
+  });
+
   return (
     <Stack.Navigator
       initialRouteName={HomeworkRoutes.App}
@@ -56,6 +63,7 @@ export const AppNavigator = () => {
       <Stack.Screen
         name={HomeworkRoutes.BookDetail}
         component={BookDetail}
+        options={{ cardStyleInterpolator: forFade }}
       />
     </Stack.Navigator>
   );

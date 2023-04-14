@@ -3,6 +3,8 @@ import { View, Text, Image, StyleSheet, Alert, Pressable } from 'react-native';
 import { Post } from '../types/Post.interface';
 import { HomeIcon } from '../assets/icons';
 
+// TODO: do not depend on the components from this directory, move it to screen components
+
 interface Props{
   post: Post,
   handleFavouriteChange: (isFavourite: boolean) => void
@@ -89,21 +91,21 @@ const styles = StyleSheet.create({
     height: 250,
     marginTop: 5,
     resizeMode: "contain",
-
   },
   content: {
     padding: 10,
   },
   title: {
     fontWeight: "bold",
-    fontSize: 20,
     marginBottom: 5,
-    color: "#333333",
+    fontFamily: 'Poppins-Bold',
+    fontSize: 22,
   },
   description: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 16,
-    color: "#555555",
-    lineHeight: 20,
+    color: '#666',
+    lineHeight: 24,
     padding: 5
   },
 });
