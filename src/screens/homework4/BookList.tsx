@@ -53,7 +53,3 @@ const styles = StyleSheet.create({
   },
 });
 
-function handleNavigation(item: Post): void {
-    throw new Error('Function not implemented.');
-}
-

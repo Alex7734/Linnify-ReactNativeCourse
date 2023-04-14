@@ -15,7 +15,8 @@ export function Card({post, handleFavouriteChange}:Props) {
 
   const handleFavorite = () => {
     handleFavouriteChange(isFavorite);
-    setIsFavorite(!isFavorite);
+    post.isFavorite = !isFavorite;
+    setIsFavorite(post.isFavorite);
   };
 
   return (
@@ -23,12 +24,12 @@ export function Card({post, handleFavouriteChange}:Props) {
       <View style={styles.header}>
       <Text style={styles.title}>{post.name}</Text>
       <Pressable onPress={handleFavorite} style={styles.favoriteIcon}>
-        <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.jpg') : require('../assets/heart-outline.jpg')} />
+        <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.png') : require('../assets/heart-outline.png')} />
       </Pressable>
       </View>
       <Image  source={post.image} style={styles.image}/>
       <View style={styles.content}>
-        <Text style={styles.description}>{post.description}</Text>
+        <Text numberOfLines={3} style={styles.description}>{post.description}</Text>
       </View>
     </View>
   );
@@ -39,13 +40,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     backgroundColor: "#FFFFFF",
     shadowColor: "#000",
-    shadowOffset: {
+    shadowOffset:{
       width: 0,
-      height: 2,
+      height: 3,
     },
-    shadowOpacity: 0.25,
-    elevation: 4,
-    marginBottom: 10,
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7, 
     borderWidth: 0.5
   },
   header: {
@@ -55,6 +56,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#DDDDDD",
     backgroundColor: "#FFFFFF",
+    shadowColor: "#000",
+    shadowOffset:{
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   profilePicture: {
     width: 40,
@@ -72,13 +81,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    width: 25,
-    height: 25,
+    width: 31,
+    height: 28,
   },
   image: {
     width: "100%",
-    height: 200,
-    resizeMode: "cover",
+    height: 250,
+    marginTop: 5,
+    resizeMode: "contain",
+
   },
   content: {
     padding: 10,
@@ -93,5 +104,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#555555",
     lineHeight: 20,
+    padding: 5
   },
 });
