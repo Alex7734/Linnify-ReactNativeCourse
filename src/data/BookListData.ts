@@ -2,7 +2,7 @@ import { Post } from "../types/Post.interface";
 
 export const data:Post[] = [
     {
-      name: "The republic", 
+      name: "The Republic", 
       author: "Plato",
       description: "Published around 380 BCE, Plato\'s most famous work explores the idea of justness, among other things, through a Socratic dialogue. Considered to be one of the most influential writings in the development of Western philosophy and political theory, The Republicis as relevant today as when it was originally published.A modern design makes this timeless book perfect for any library. Essential volumes for the shelves of every classic literature lover, the Chartwell Classics series includes beautifully presented works and collections from some of the most important authors in literary history. Chartwell Classics are the editions of choice for the most discerning literature buffs.",
       image: require('../assets/theRepublic.jpeg'),

@@ -63,6 +63,7 @@ export const AppNavigator = () => {
                         onPress={() => {navigation.goBack()}}>       
                         </Pressable>,        
                     }
+                    
                 }}
              component={BottomTabs} />
         </Stack.Navigator>

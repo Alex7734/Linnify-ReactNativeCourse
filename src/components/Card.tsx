@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontWeight: "bold",
     marginBottom: 5,
-    fontFamily: 'Poppins-Bold',
+    fontWeight: "bold",
+    fontFamily: 'Arial',
     fontSize: 22,
   },
   description: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Arial',
     fontSize: 16,
     color: '#666',
     lineHeight: 24,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Pressable} from 'react-native';
 import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 
@@ -8,9 +8,20 @@ import {Footer} from './homework4-components/FooterBookList';
 import {data} from '../../data/BookListData';
 import { HomeworkRoutes, HomeworkRouteProps } from '../../navigation/routes/homework-routes';
 import { StackScreenProps } from '@react-navigation/stack';
+import { SearchBar } from '../../components/SearchBar';
+import { useDebounce } from '../../hooks/use-debounce.hook';
+import { useNetworkStatus } from '../../hooks/use-network-status.hook';
 
 export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, HomeworkRoutes.BookList> ): JSX.Element {
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
+  const networkStatus = useNetworkStatus();
+  
+  networkStatus && console.log('networkStatus', networkStatus);
+
+  useEffect(() => {
+    console.log('Favorite count: ', favoriteCount);
+    return () => console.log('bye');
+  }, [favoriteCount]);
 
   const handleFavouriteChange = (isFavourite: boolean) => {
     if (isFavourite) {
@@ -37,6 +48,7 @@ export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, Home
       keyExtractor={(item: Post) => item.name}
       ListEmptyComponent={() => <Text>No data</Text>}
       ListFooterComponent={() => <Footer favoriteCount={favoriteCount} />}
+      ListHeaderComponent={SearchBar}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
   );

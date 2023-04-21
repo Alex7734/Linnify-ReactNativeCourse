@@ -3,6 +3,7 @@ import {
   Alert,
   FlatList,
   ListRenderItemInfo,
+  Pressable,
   StyleSheet,
   Text,
   View,
@@ -54,6 +55,7 @@ function BookList(): JSX.Element {
   </View>
 
   return (
+    <>
       <FlatList
         style={{padding: 12, backgroundColor: "#F7F7F0"}}
         data = {data}
@@ -68,6 +70,8 @@ function BookList(): JSX.Element {
         />}
       />
     );
+    </>
+
 }
 const styles = StyleSheet.create({
   footer: {
