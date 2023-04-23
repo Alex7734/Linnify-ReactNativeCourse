@@ -3,8 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabRouteProps, TabRoutes } from '../routes/bottom-tab-homework-routes';
 import { LogBox, StyleSheet, View } from 'react-native';
-import { HomeIcon, GithubIcon, PersonIcon, SettingsIcon } from '../../assets/icons';
-import { useNavigation } from '@react-navigation/native';
+import { HomeIcon, PersonIcon, SettingsIcon } from '../../assets/icons';
 import { Home } from '../../screens/homework4/Home';
 import { Settings } from '../../screens/homework4/Settings';
 import { Profile } from '../../screens/homework4/Profile';
@@ -15,8 +14,6 @@ const Tab = createBottomTabNavigator<TabRouteProps>();
 
 export const BottomTabs = () => {
 
-    const navigation = useNavigation();
-    
     return(
         <>
             <Tab.Navigator

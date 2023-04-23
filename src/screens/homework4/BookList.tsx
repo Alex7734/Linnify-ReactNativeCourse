@@ -11,16 +11,17 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { SearchBar } from '../../components/SearchBar';
 import { useDebounce } from '../../hooks/use-debounce.hook';
 import { useNetworkStatus } from '../../hooks/use-network-status.hook';
+import { useSearch } from "../../hooks/use-search.hook";
 
 export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, HomeworkRoutes.BookList> ): JSX.Element {
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
   const networkStatus = useNetworkStatus();
-  
+
   networkStatus && console.log('networkStatus', networkStatus);
 
   useEffect(() => {
     console.log('Favorite count: ', favoriteCount);
-    return () => console.log('bye');
+    return () => console.log('left screen with return');
   }, [favoriteCount]);
 
   const handleFavouriteChange = (isFavourite: boolean) => {
