@@ -5,8 +5,8 @@ import { TabRouteProps, TabRoutes } from '../routes/bottom-tab-homework-routes';
 import { LogBox, StyleSheet, View } from 'react-native';
 import { HomeIcon, PersonIcon, SettingsIcon } from '../../assets/icons';
 import { Home } from '../../screens/homework4/Home';
-import { ScreenWithUseImperativeHandle, Settings } from '../../screens/homework4/Settings';
-import { Profile } from '../../screens/homework4/Profile';
+import { ScreenWithUseImperativeHandle } from '../../screens/homework4/Settings';
+import { ScreenWithState } from '../../screens/homework4/Profile';
 LogBox.ignoreAllLogs(true);
 
 
@@ -34,7 +34,7 @@ export const BottomTabs = () => {
                         tabBarIcon: () => <HomeIcon width={25} height={25} />
                     }}    
                 />
-                <Tab.Screen name={TabRoutes.Profile} component={() => <Profile />}
+                <Tab.Screen name={TabRoutes.Profile} component={() => <ScreenWithState />}
                     options={{ 
                         tabBarLabel: 'Profile',
                         tabBarIcon: () => <PersonIcon width={25} height={25} />

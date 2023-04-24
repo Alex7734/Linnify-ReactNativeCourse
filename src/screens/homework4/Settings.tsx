@@ -1,8 +1,3 @@
-import {StackScreenProps} from '@react-navigation/stack';
-import {
-  TabRouteProps,
-  TabRoutes,
-} from '../../navigation/routes/bottom-tab-homework-routes';
 import {Alert, Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useRef, useImperativeHandle} from 'react';
 
@@ -124,7 +119,7 @@ export const ScreenWithUseImperativeHandle = () => {
     <View style={styles.container}>
       <PersonalInfoForm ref={personalInfoRef} />
       <StudentInfoForm ref={studentInfoRef} />
-      <View style={[styles.buttonfrom, {'marginBottom': 30}]}>
+      <View style={[styles.buttonfrom, {marginBottom: 30}]}>
         <Button title="Submit" onPress={handleSubmit} />
       </View>
     </View>
@@ -148,12 +143,6 @@ const styles = StyleSheet.create({
     flex: 2,
     width: '80%',
     justifyContent: 'center',
-    marginTop: 10,
-  },
-  buttonfrom: {
-    flex: 1,
-    width: '80%',
-    justifyContent: 'center',
   },
   input: {
     borderWidth: 1,
@@ -161,5 +150,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 10,
     marginBottom: 10,
+  },
+  buttonfrom: {
+    flex: 1,
+    width: '80%',
+    justifyContent: 'center',
   },
 });
