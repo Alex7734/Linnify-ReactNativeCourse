@@ -24,13 +24,25 @@ const PersonalInfoForm = React.forwardRef<PersonalInfoRef>((props, ref) => {
   const lastNameRef = useRef<TextInput>(null);
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
+  const [isFirstNameValid, setIsFirstNameValid] = React.useState(true);
+  const [isLastNameValid, setIsLastNameValid] = React.useState(true);
 
   useImperativeHandle(ref, () => ({
     getValues: () => {
-      if (!firstName || !lastName) {
+      if (!firstName) {
+        setIsFirstNameValid(false);
         Alert.alert('Please fill in all fields');
         return null;
       }
+
+      if (!lastName) {
+        setIsLastNameValid(false);
+        Alert.alert('Please fill in all fields');
+        return null;
+      }
+
+      setIsFirstNameValid(true);
+      setIsLastNameValid(true);
 
       return {
         firstName,
@@ -47,13 +59,13 @@ const PersonalInfoForm = React.forwardRef<PersonalInfoRef>((props, ref) => {
         value={firstName} 
         onChangeText={setFirstName} 
         placeholder="First name" 
-        style={styles.input} />
+        style={[styles.input, !isFirstNameValid && styles.inputError]} />
       <TextInput 
         ref={lastNameRef} 
         value={lastName} 
         onChangeText={setLastName} 
         placeholder="Last name" 
-        style={styles.input} />
+        style={[styles.input, !isLastNameValid && styles.inputError]} />
     </View>
   );
 });
@@ -63,13 +75,25 @@ const StudentInfoForm = React.forwardRef<StudentInfoRef>((props, ref) => {
   const yearRef = useRef<TextInput>(null);
   const [faculty, setFaculty] = React.useState('');
   const [year, setYear] = React.useState('');
+  const [isFacultyValid, setIsFacultyValid] = React.useState(true);
+  const [isYearValid, setIsYearValid] = React.useState(true);
 
   useImperativeHandle(ref, () => ({
     getValues: () => {
-      if (!faculty || !year) {
+      if (!faculty) {
+        setIsFacultyValid(false);
         Alert.alert('Please fill in all fields');
         return null;
       }
+
+      if (!year) {
+        setIsYearValid(false);
+        Alert.alert('Please fill in all fields');
+        return null;
+      }
+
+      setIsFacultyValid(true);
+      setIsYearValid(true);
 
       return {
         faculty,
@@ -86,13 +110,13 @@ const StudentInfoForm = React.forwardRef<StudentInfoRef>((props, ref) => {
         value={faculty} 
         onChangeText={setFaculty} 
         placeholder="Faculty" 
-        style={styles.input} />
+        style={[styles.input, !isFacultyValid && styles.inputError]} />
       <TextInput 
         ref={yearRef} 
         value={year} 
         onChangeText={setYear} 
         placeholder="Year" 
-        style={styles.input} />
+        style={[styles.input, !isYearValid && styles.inputError]} />
     </View>
   );
 });
@@ -156,4 +180,8 @@ const styles = StyleSheet.create({
     width: '80%',
     justifyContent: 'center',
   },
+  inputError: {
+    borderColor: 'red',
+    borderWidth: 2,
+  }
 });
