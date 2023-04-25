@@ -31,13 +31,11 @@ const PersonalInfoForm = React.forwardRef<PersonalInfoRef>((props, ref) => {
     getValues: () => {
       if (!firstName) {
         setIsFirstNameValid(false);
-        Alert.alert('Please fill in all fields');
         return null;
       }
 
       if (!lastName) {
         setIsLastNameValid(false);
-        Alert.alert('Please fill in all fields');
         return null;
       }
 
@@ -82,13 +80,11 @@ const StudentInfoForm = React.forwardRef<StudentInfoRef>((props, ref) => {
     getValues: () => {
       if (!faculty) {
         setIsFacultyValid(false);
-        Alert.alert('Please fill in all fields');
         return null;
       }
 
       if (!year) {
         setIsYearValid(false);
-        Alert.alert('Please fill in all fields');
         return null;
       }
 
