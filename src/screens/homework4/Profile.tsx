@@ -19,6 +19,7 @@ type StudentFormProps = {
   setterFunc: Dispatch<SetStateAction<StudentInfo>>
 }
 
+// TODO: MOVE THE NEXT TWO COMPONENTS IN DIFFRENT FILES
 export const PersonalForm = ({ setterFunc }: PersonalFormProps) => {
   const [info, setInfo] = useState<PersonalInfo>({ firstName: '', lastName: '' });
   const [missingFields, _] = useState<string[]>([]);
@@ -29,7 +30,8 @@ export const PersonalForm = ({ setterFunc }: PersonalFormProps) => {
 
   return(
     <>  
-    <TextInput
+        <Text style={styles.text}>Personal info</Text>
+        <TextInput
           value={info.firstName}
           onChangeText={(text) => setInfo({ ...info, firstName: text })}
           placeholder="First name"
@@ -59,6 +61,7 @@ export const StudentForm = ({ setterFunc }: StudentFormProps) => {
 
   return (
     <>
+      <Text style={styles.text}>Student info</Text>
       <TextInput
         value={info.faculty}
         onChangeText={(text) => handleInputChange('faculty', text)}
@@ -110,11 +113,9 @@ export const ScreenWithState = () => {
   return (
     <View style={styles.container}>
       <View style={styles.form}>
-        <Text style={styles.text}>Personal info</Text>
         <PersonalForm setterFunc={setPersonalInfo} />
       </View>
       <View style={styles.form}>
-        <Text style={styles.text}>Student info</Text>
         <StudentForm setterFunc={setStudentInfo} />
       </View>
       <View style={[styles.form, { marginBottom: 30 }]}>
