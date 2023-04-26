@@ -5,17 +5,20 @@ import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import {Card} from '../../components/Card';
 import {Post} from '../../types/Post.interface';
 import {Footer} from './homework4-components/FooterBookList';
-import {data} from '../../data/BookListData';
 import { HomeworkRoutes, HomeworkRouteProps } from '../../navigation/routes/homework-routes';
 import { StackScreenProps } from '@react-navigation/stack';
 import { SearchBar } from '../../components/SearchBar';
-import { useDebounce } from '../../hooks/use-debounce.hook';
 import { useNetworkStatus } from '../../hooks/use-network-status.hook';
-import { useSearch } from "../../hooks/use-search.hook";
+import { BookState, useBookStore } from '../../store/useBookStore';
+import { MMKV } from 'react-native-mmkv';
 
 export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, HomeworkRoutes.BookList> ): JSX.Element {
+  const storage = new MMKV();
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
   const networkStatus = useNetworkStatus();
+  const {books, setCurrentBook} = useBookStore((state: BookState) => {
+    return {books: state.books, setCurrentBook: state.setCurrentBooks}
+  });
 
   networkStatus && console.log('networkStatus', networkStatus);
 
@@ -23,6 +26,12 @@ export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, Home
     console.log('Favorite count: ', favoriteCount);
     return () => console.log('left screen with return');
   }, [favoriteCount]);
+
+
+  useEffect(() => {
+    const bookChosen = storage.set('book', "A book");
+    console.log('book', bookChosen);
+  })
 
   const handleFavouriteChange = (isFavourite: boolean) => {
     if (isFavourite) {
@@ -32,7 +41,8 @@ export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, Home
   };
 
   const handleNavigation = (item: Post) => {
-    navigation.navigate(HomeworkRoutes.BookDetail, {...item});
+    setCurrentBook(item);
+    navigation.navigate(HomeworkRoutes.BookDetail);
   };
 
   const renderItem = ({item}: ListRenderItemInfo<Post>) => (
@@ -44,7 +54,7 @@ export function BookList({navigation}: StackScreenProps<HomeworkRouteProps, Home
   return (
     <FlatList
       style={styles.flatListContainer}
-      data={data}
+      data={books}
       renderItem={renderItem}
       keyExtractor={(item: Post) => item.name}
       ListEmptyComponent={() => <Text>No data</Text>}

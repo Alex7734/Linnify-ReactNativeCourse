@@ -1,5 +1,3 @@
-import { Post } from "../../types/Post.interface";
-
 export enum HomeworkRoutes {
     App = 'App',
     BookList = 'Home',
@@ -8,6 +6,6 @@ export enum HomeworkRoutes {
 
 export type HomeworkRouteProps = {
     [HomeworkRoutes.BookList]: undefined;
-    [HomeworkRoutes.BookDetail]: Post;
+    [HomeworkRoutes.BookDetail]: undefined;
     [HomeworkRoutes.App]: undefined;
 }
