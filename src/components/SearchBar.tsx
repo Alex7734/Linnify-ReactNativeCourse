@@ -13,8 +13,6 @@ export const SearchBar = (search: string) => {
     // TODO: You will have to move the useSearch hook in the book list component so you can actually filter the given data
 
     useEffect(() => {
-        console.log('debounce', debounce)
-        console.log(searchResults);
     }, [debounce]);
 
     const setSearch = (text: string) => {

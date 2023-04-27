@@ -3,7 +3,7 @@ import { MMKV } from 'react-native-mmkv'
 
 const storage = new MMKV()
 
-const zustandStorage: StateStorage = {
+export const zustandStorage: StateStorage = {
   setItem: (name, value) => {
     return storage.set(name, value)
   },

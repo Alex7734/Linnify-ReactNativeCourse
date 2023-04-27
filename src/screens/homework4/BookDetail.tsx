@@ -27,7 +27,6 @@ export const BookDetail = (props : StackScreenProps<HomeworkRouteProps, Homework
 
     useEffect(() => {
       const bookChosen = storage.getString('book');
-      console.log('book', bookChosen);
     })
 
 
@@ -36,7 +35,7 @@ export const BookDetail = (props : StackScreenProps<HomeworkRouteProps, Homework
       <Text style={styles.name}>{book?.name}</Text>
       <Text style={styles.author}>{book?.author}</Text>
       <Pressable onPress={() => detailTextRef.current?.handleChangeBackground(randomColor())}>
-        {book?.image && <Image source={book?.image} style={styles.photo}/>}
+        {book?.image && <Image source={{uri: book?.image}} style={styles.photo}/>}
       </Pressable>
       <BookDetailText ref={detailTextRef} {...props}></BookDetailText>
       <Image 

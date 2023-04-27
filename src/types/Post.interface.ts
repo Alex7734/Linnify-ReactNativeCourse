@@ -1,8 +1,8 @@
 export interface Post{
     name: string,
-    author: string,
+    author?: string,
     description: string,
-    image: number,
-    isFavorite: boolean,
+    image: string,
+    isFavorite?: boolean,
     id?: number,
 }

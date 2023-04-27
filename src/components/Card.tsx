@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Alert, Pressable } from 'react-native';
 import { Post } from '../types/Post.interface';
-import { HomeIcon } from '../assets/icons';
 
 // TODO: do not depend on the components from this directory, move it to screen components
 
@@ -29,7 +28,7 @@ export function Card({post, handleFavouriteChange}:Props) {
         <Image style={styles.icon} source={isFavorite ? require('../assets/heart-filled.png') : require('../assets/heart-outline.png')} />
       </Pressable>
       </View>
-      <Image  source={post.image} style={styles.image}/>
+      <Image  source={{uri: post.image}} style={styles.image}/>
       <View style={styles.content}>
         <Text numberOfLines={3} style={styles.description}>{post.description}</Text>
       </View>
